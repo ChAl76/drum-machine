@@ -1,5 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { togglePower, setVolume } from './store';
 import DrumPad from './DrumPad';
 import './App.css';
 
@@ -53,6 +54,13 @@ const clips = [
 
 function App() {
   const displayText = useSelector((state) => state.display.text);
+  const power = useSelector((state) => state.drum.power);
+  const volume = useSelector((state) => state.drum.volume);
+  const dispatch = useDispatch();
+
+  const handleVolumeChange = (event) => {
+    dispatch(setVolume(event.target.value));
+  };
 
   return (
     <div id="drum-machine">
@@ -70,8 +78,24 @@ function App() {
             keyTrigger={clip.key}
             sound={clip.url}
             id={clip.id}
+            power={power}
+            volume={volume}
           />
         ))}
+      </div>
+      <div className="controls">
+        <button onClick={() => dispatch(togglePower())}>
+          Power: {power ? 'ON' : 'OFF'}
+        </button>
+        <input
+          type="range"
+          min="0"
+          max="1"
+          step="0.01"
+          value={volume}
+          onChange={handleVolumeChange}
+          className="volume-slider"
+        />
       </div>
     </div>
   );

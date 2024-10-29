@@ -12,10 +12,28 @@ const displaySlice = createSlice({
   },
 });
 
+const drumSlice = createSlice({
+  name: 'drum',
+  initialState: {
+    power: true,
+    volume: 1,
+  },
+  reducers: {
+    togglePower: (state) => {
+      state.power = !state.power;
+    },
+    setVolume: (state, action) => {
+      state.volume = action.payload;
+    },
+  },
+});
+
 export const { setDisplayText } = displaySlice.actions;
+export const { togglePower, setVolume } = drumSlice.actions;
 
 export const store = configureStore({
   reducer: {
     display: displaySlice.reducer,
+    drum: drumSlice.reducer,
   },
 });

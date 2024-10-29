@@ -2,18 +2,20 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { setDisplayText } from './store'; // Import action
 
-const DrumPad = ({ keyTrigger, sound, id }) => {
+const DrumPad = ({ keyTrigger, sound, id, power, volume }) => {
   const dispatch = useDispatch();
 
   const handleClick = async () => {
     const audioElement = document.getElementById(keyTrigger);
-
     dispatch(setDisplayText(id));
 
-    try {
-      await audioElement.play();
-    } catch (error) {
-      console.log('Audio playback interrupted:', error);
+    if (power) {
+      audioElement.volume = volume;
+      try {
+        await audioElement.play();
+      } catch (error) {
+        console.log('Audio playback interrupted:', error);
+      }
     }
   };
 
