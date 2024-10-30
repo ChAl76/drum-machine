@@ -16,7 +16,7 @@ const drumSlice = createSlice({
   name: 'drum',
   initialState: {
     power: true,
-    volume: 1,
+    volume: 0.5,
   },
   reducers: {
     togglePower: (state) => {

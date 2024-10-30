@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { setDisplayText } from './store'; // Import action
+import { setDisplayText } from './store';
 
 const DrumPad = ({ keyTrigger, sound, id, power, volume }) => {
   const dispatch = useDispatch();
