@@ -64,10 +64,27 @@ function App() {
 
   return (
     <div id="drum-machine">
-      <h1 className="text-white">Drum Machine</h1>
+      <h1 className="title">Drum Machine</h1>
+
+      <div className="controls-power">
+        <div className="form-check form-switch" style={{ float: 'right' }}>
+          <input
+            className="form-check-input"
+            type="checkbox"
+            role="switch"
+            id="power-switch"
+            checked={power}
+            onChange={() => dispatch(togglePower())}
+          />
+          <label className="form-check-label" htmlFor="power-switch">
+            Power
+          </label>
+        </div>
+      </div>
+
       <div id="display">
         <div className="display-text">
-          {displayText || 'Press a key or click a drum pad'}
+          {displayText || 'Press the key to hear the sound'}
         </div>
       </div>
 
@@ -83,10 +100,8 @@ function App() {
           />
         ))}
       </div>
-      <div className="controls">
-        <button onClick={() => dispatch(togglePower())}>
-          Power: {power ? 'ON' : 'OFF'}
-        </button>
+      <div className="controls-volume">
+        <label htmlFor="volume-slider">Volume</label>
         <input
           type="range"
           min="0"
@@ -94,6 +109,7 @@ function App() {
           step="0.01"
           value={volume}
           onChange={handleVolumeChange}
+          id="volume-slider"
           className="volume-slider"
         />
       </div>
