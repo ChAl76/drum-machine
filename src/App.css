@@ -109,3 +109,50 @@ body {
   transition: opacity 0.2s;
   border-radius: 4px;
 }
+
+@media screen and (max-width: 600px) {
+  #drum-machine {
+    width: 100%;
+    height: 90%;
+  }
+
+  .title {
+    font-size: 1.4rem;
+  }
+
+  .controls-power {
+    margin-bottom: 0.3em;
+  }
+
+  .pad-container {
+    grid-template-columns: repeat(3, 50px);
+    gap: 0.3em;
+  }
+
+  .drum-pad {
+    width: 100%;
+    height: 100%;
+    font-size: 1.1rem;
+    padding: 0.5em;
+  }
+
+  .controls-volume {
+    margin-top: 0.5em;
+  }
+
+  .volume-slider {
+    margin-top: 10px;
+  }
+
+  .controls-volume input[type='range'] {
+    height: 5px;
+  }
+
+  .display-text {
+    font-size: 1rem;
+  }
+
+  #display {
+    font-size: 1rem;
+  }
+}
